@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/ta17.png">
 <meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/0switch.png">
 <meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/1switch.png">
-<meta property="og:updated_time" content="2017-04-24T17:02:19.000Z">
+<meta property="og:updated_time" content="2017-04-24T20:05:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="State transition design">
 <meta name="twitter:description" content="A colleague asked me a question about state transition design technique while she was preparing for the ISTQB advanced test analyst exam. I always found this test design technique is useful when we ha">
@@ -335,7 +335,7 @@
 </blockquote>
 <img src="/2017/04/24/State-Transition-design/ta17.png" alt="question17" title="question17">
 <p>Starting from Activated: what is the number of 0-switch transitions and what is the number of allowed 1-switch?</p>
-<p>To find out N-switch we need to understand what is N-switch. N-switch is the measurement of test coverage. It refers to the length of N+1 sides or edges. </p>
+<p>To find out N-switch we need to understand what is N-switch. N-switch is the measurement of test coverage. It refers to the length of N+1. </p>
 <p>This question is simple except for one tricky condition.</p>
 <p>Let’s find 0-swith first.<br>The question says starting from state Acitivated so we can draw the following state transition tree to describe starting from Activated and there is only 1 line or edge connecting to the next state. </p>
 <img src="/2017/04/24/State-Transition-design/0switch.png" alt="0 switch" title="0 switch">
@@ -355,6 +355,7 @@
 <p><strong>Step2</strong>: If the current tree level is K. Check all the nodes on this level from left to right. Find all the next state of the nodes.</p>
 <p><strong>Step3</strong>: Repeate step2 until the nodes on level K shows up on level J and J &lt; K, then this node is the final node. There is no need to generate more children for this node. Or the node is the end state we don’t need to continue to generate too.</p>
 <p><strong>Step4</strong>: If we want to have deeper coverage we can simply add one level to the tree generated with the rules above. </p>
+<p>Next time I will find a real scenario to demostrate the test cases generated with this method. </p>
 
       
     </div>
