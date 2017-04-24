@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="testing, functional testing, test design," />
 
 
 
@@ -88,7 +88,7 @@
 
 
 <meta name="description" content="A colleague asked me a question about state transition design technique while she was preparing for the ISTQB advanced test analyst exam. I always found this test design technique is useful when we ha">
-<meta name="keywords">
+<meta name="keywords" content="testing, functional testing, test design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="State transition design">
 <meta property="og:url" content="http://yoursite.com/2017/04/24/State-Transition-design/index.html">
@@ -96,7 +96,8 @@
 <meta property="og:description" content="A colleague asked me a question about state transition design technique while she was preparing for the ISTQB advanced test analyst exam. I always found this test design technique is useful when we ha">
 <meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/ta17.png">
 <meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/0switch.png">
-<meta property="og:updated_time" content="2017-04-24T16:11:16.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/04/24/State-Transition-design/1switch.png">
+<meta property="og:updated_time" content="2017-04-24T16:51:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="State transition design">
 <meta name="twitter:description" content="A colleague asked me a question about state transition design technique while she was preparing for the ISTQB advanced test analyst exam. I always found this test design technique is useful when we ha">
@@ -328,17 +329,31 @@
         <p>A colleague asked me a question about state transition design technique while she was preparing for the ISTQB advanced test analyst exam. I always found this test design technique is useful when we have the system/application state changed from one to another.</p>
 <p>I once tested an application feature which can monitor the customer’s purchase record. If the customer has purchased in 90 days then the customer will be classified as ‘loyal’ customer and the system will provide more access to live market data for the customer.<br>Customer status transits from loyal to disloyal and to loyal and to loyal again. This is a very simple example but in actual testing there are more conditions and status I need to consider. </p>
 <p><strong>The question is below</strong></p>
+<blockquote>
 <p>17 When an employee requests payment of a claim from his/her health insurance, this request follows the sequences of states shown in the diagram from being requested until it is closed and removed. If information is missing or changed, the claim may be moved back to an earlier state to prevent payment. There are the following restrictions: If a claim in state Accepted has been Closed it can only be restored to the same state Accepted. If a claim in state Activated has been Closed it can only be restored to state Activated. </p>
+</blockquote>
 <img src="/2017/04/24/State-Transition-design/ta17.png" alt="question17" title="question17">
 <p>Starting from Activated: what is the number of 0-switch transitions and what is the number of allowed 1-switch?</p>
 <p>To find out N-switch we need to understand what is N-switch. N-switch is the measurement of test coverage. It refers to the length of N+1 sides or edges. </p>
-<p>This is question is not simple except for one tricky condition.</p>
-<p>Let’s find 0-swith first.<br>The question says starting from state Acitivated so we can draw the following state transition tree.</p>
+<p>This question is simple except for one tricky condition.</p>
+<p>Let’s find 0-swith first.<br>The question says starting from state Acitivated so we can draw the following state transition tree to describe starting from Activated and there is only 1 line or edge connecting to the next state. </p>
 <img src="/2017/04/24/State-Transition-design/0switch.png" alt="0 switch" title="0 switch">
-<p>We need to transform the state transition diagram to state transition tree.<br><strong>Step1</strong>: Choose initial state or start state as root. The level of root is 1.</p>
+<p>So we have 4 0-switch transitions here.</p>
+<p>Next we need to find 1-switch. We can simply extend the state diagram tree we just drew.<br>Find two lines or edges in total. </p>
+<img src="/2017/04/24/State-Transition-design/1switch.png" alt="1 switch" title="1 switch">
+<p>So if we count all the nodes on level 3(The root level is level 1). There are 12 1-switch transitions.<br>Then the tricky part is there are two conditions in the question.</p>
+<blockquote>
+<p>If a claim in state Accepted has been Closed it can only be restored to the same state Accepted. </p>
+</blockquote>
+<p>This condition we can ignore because we start from Activated state.</p>
+<blockquote>
+<p>If a claim in state Activated has been Closed it can only be restored to state Activated. </p>
+</blockquote>
+<p>This condition removed the path Activiated &gt; Closed &gt; Accepted. So we have 11 1-switch transitions. </p>
+<p>In practise we use the following method to transform the state transition diagram to state transition tree.<br><strong>Step1</strong>: Choose initial state or start state as root. The level of root is 1.</p>
 <p><strong>Step2</strong>: If the current tree level is K. Check all the nodes on this level from left to right. Find all the next state of the nodes.</p>
 <p><strong>Step3</strong>: Repeate step2 until the nodes on level K shows up on level J and J &lt; K, then this node is the final node. There is no need to generate more children for this node. Or the node is the end state we don’t need to continue to generate too.</p>
-<p>So let’s draw the state transit tree for this question.</p>
+<p><strong>Step4</strong>: If we want to have deeper coverage we can simply add one level to the tree generated with the rules above. </p>
 
       
     </div>
@@ -365,6 +380,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/testing-functional-testing-test-design/" rel="tag"># testing, functional testing, test design</a>
+          
+        </div>
       
 
       
@@ -459,7 +480,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
